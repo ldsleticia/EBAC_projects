@@ -28,6 +28,12 @@ class Calculator {
       } else if (key === "Backspace") {
         calculator.delete();
         calculator.updateDisplay();
+      } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+        calculator.chooseOperation(key);
+        calculator.updateDisplay();
+      } else if (key === "Enter") {
+        calculator.calculate();
+        calculator.updateDisplay();
       }
     });
   }
