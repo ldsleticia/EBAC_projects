@@ -14,7 +14,22 @@ class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.previousOperandTextElement = previousOperandTextElement;
     this.currentOperandTextElement = currentOperandTextElement;
+    this.initializeKeyboardInput();
     this.clear();
+  }
+
+  initializeKeyboardInput() {
+    document.addEventListener("keydown", (event) => {
+      const key = event.key;
+
+      if (!isNaN(key)) {
+        calculator.appendNumber(key);
+        calculator.updateDisplay();
+      } else if (key === "Backspace") {
+        calculator.delete();
+        calculator.updateDisplay();
+      }
+    });
   }
 
   formatDisplayNumber(number) {
