@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agdasima&display=swap"
+      rel="stylesheet"
+    />
+    <title>Formulário EBAC</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form">
+        <h1>Cadastro de usuários</h1>
+        <form action="" class="estilo-formulario">
+          <label for="nome">Digite seu nome: </label>
+          <input type="text" placeholder="Digite seu nome" id="nome" required />
+          <br />
+          <br />
+
+          <p>De qual das cores abaixo voce gosta?</p>
+          <br />
+          <input
+            type="checkbox"
+            id="azul"
+            name="azul"
+            value="Azul"
+            class="checkbox-select"
+          />
+          <label for="azul">Azul</label>
+          <br />
+
+          <input
+            type="checkbox"
+            id="verde"
+            name="verde"
+            value="Verde"
+            class="checkbox-select"
+          />
+          <label for="verde">Verde</label>
+          <br />
+          <br />
+
+          <p>Selecione como você se identifica</p>
+          <br />
+          <input
+            type="radio"
+            id="mulher"
+            name="genero"
+            value="Mulher"
+            class="radio-select"
+          />
+          <label for="mulher">Mulher</label>
+          <br />
+
+          <input
+            type="radio"
+            id="homem"
+            name="genero"
+            value="Homem"
+            class="radio-select"
+          />
+          <label for="homem">Homem</label>
+          <br />
+
+          <input
+            type="radio"
+            id="outros"
+            name="genero"
+            value="Outros"
+            class="radio-select"
+          />
+          <label for="outros">Outros</label>
+          <br />
+          <br />
+
+          <label for="filmes">Selecione um genero de cinematografico</label>
+          <select name="filmes" id="filmes">
+            <option value="" selected disabled hidden>...</option>
+            <option value="Terror">Terror</option>
+            <option value="Comédia">Comédia</option>
+            <option value="Drama">Drama</option>
+            <option value="Suspense">Suspense</option>
+          </select>
+          <br />
+          <br />
+
+          <input type="submit" id="submit-button" onclick="changeButton()" />
+        </form>
+      </div>
+
+      <table class="table">
+        <caption>
+          Usuários cadastrados
+        </caption>
+        <tr>
+          <th>Nome</th>
+          <th>Cor escolhida</th>
+          <th>Sexo</th>
+          <th>Genero cinematografico</th>
+        </tr>
+        <tbody id="rows">
+          <tr id="table-lines"></tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
