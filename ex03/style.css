@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* background: rgb(137, 197, 211); */
+  font-family: 'Agdasima', sans-serif;
+}
+
+div.container {
+  display: flex;
+  justify-content: space-around;
+
+  > div.form {
+    > .estilo-formulario {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid rgb(169, 219, 199);
+      border-radius: 5px;
+
+      > #nome:hover,
+      #filmes:hover {
+        background-color: rgb(169, 219, 199);
+      }
+    }
+
+    > h1 {
+      margin: auto;
+      width: 60%;
+      padding: 10px;
+    }
+  }
+
+  > .table {
+    border-collapse: collapse;
+    margin: 5rem 100px 30rem 0;
+  }
+}
+
+caption {
+  font-size: x-large;
+}
+
+td,
+th {
+  border: 1px solid rgb(169, 219, 199);
+  text-align: left;
+  padding: 8px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: rgb(169, 219, 199);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(140, 157, 207);
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(169, 219, 199);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
