@@ -1,21 +1,21 @@
 const button = document.getElementById("submit-button");
+const spinner = document.getElementById("spinner");
+
+let nomeAnterior = "";
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
 });
 
-let nomeAnterior = "";
-
 function salvaNome() {
-  
   let nome = document.getElementById("nome").value;
 
   if (nome === nomeAnterior) {
-    nome = 'Nomes iguais'
+    nome = "Nomes iguais";
   }
 
   nomeAnterior = nome;
-  
+
   return nome;
 }
 
@@ -59,27 +59,19 @@ function gravaTabela() {
 
   if (nomeSalvo === "") {
     alert("É necessário colocar o nome");
-    return
-  }
-
-  else if(nomeSalvo.includes("Nomes iguais")) {
-    alert("Os nomes precisam ser diferentes")
-    return
-  }
-
-  else if (corSalva.includes("Nenhuma cor selecionada")) {
+    return;
+  } else if (nomeSalvo.includes("Nomes iguais")) {
+    alert("Os nomes precisam ser diferentes");
+    return;
+  } else if (corSalva.includes("Nenhuma cor selecionada")) {
     alert("É necessário colocar a cor");
-    return
-  }
-
-  else if(generoSalvo === undefined) {
-    alert("É necessário escolher um gênero")
-    return
-  }
-
-  else if(filmeSalvo === "") {
-    alert("É necessário escolher um gênero cinematográfico")
-    return
+    return;
+  } else if (generoSalvo === undefined) {
+    alert("É necessário escolher um gênero");
+    return;
+  } else if (filmeSalvo === "") {
+    alert("É necessário escolher um gênero cinematográfico");
+    return;
   }
 
   let novaLinha = document.createElement("tr");
@@ -103,12 +95,21 @@ function gravaTabela() {
   document.getElementById("rows").appendChild(novaLinha);
 }
 
+function showSpinner() {
+  spinner.style.display = "block";
+}
+
+function hideSpinner() {
+  spinner.style.display = "none";
+}
+
 function changeButton() {
-  gravaTabela();
-  button.disabled = true
+  button.disabled = true;
+  showSpinner();
 
   setTimeout(() => {
-    button.disabled = false
+    hideSpinner();
+    gravaTabela();
+    button.disabled = false;
   }, 1000);
-  
 }
