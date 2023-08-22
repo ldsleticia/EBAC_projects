@@ -1,4 +1,4 @@
-import { dateFormat } from "@/utils/DateFormat";
+import { dateFormat } from '../utils/DateFormat'
 
 export default function DataFormatada(props) {
     return(

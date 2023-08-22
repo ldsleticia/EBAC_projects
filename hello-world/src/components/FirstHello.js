@@ -1,4 +1,4 @@
-import DataFormatada from "@/utils/DataFormatada";
+import DataFormatada from "../utils/DataFormatada";
 
 export default function FirstHello() {
   return (

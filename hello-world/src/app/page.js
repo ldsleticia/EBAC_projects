@@ -1,6 +1,6 @@
-import FirstHello from "@/components/FirstHello";
-import SecoundHello from "@/components/SecoundHello";
-import { dateFormat } from "@/utils/DateFormat";
+import FirstHello from "../components/FirstHello";
+import SecoundHello from "../components/SecoundHello";
+import { dateFormat } from "../utils/DateFormat";
 import { lineFormat } from "../utils/LineFormat";
 import ThreeHello from "../components/ThreeHello";
 import HelloUnstructured from "../components/HelloUnstructured";
