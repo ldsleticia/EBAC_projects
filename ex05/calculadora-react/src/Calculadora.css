@@ -23,6 +23,14 @@ code {
   padding-bottom: 5em;
 }
 
+.numberButtons {
+  padding: 20px;
+}
+
+.operatorButtons {
+  padding: 20px;
+}
+
 .numberButtons,
 .operatorButtons {
   background-color: #b57fff;
