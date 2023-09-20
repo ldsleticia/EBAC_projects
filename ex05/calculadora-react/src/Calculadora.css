@@ -15,4 +15,29 @@ code {
 .Calculadora {
   font-family: sans-serif;
   text-align: center;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 15rem;
+  margin-left: 50em;
+  margin-top: 10em;
+  padding-bottom: 5em;
+}
+
+.numberButtons,
+.operatorButtons {
+  background-color: #b57fff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.numberButtons:hover,
+.operatorButtons:hover {
+  background-color: #9868f5;
+}
+
+.result {
+  color: #7c51ea;
+  text-align: right;
 }
