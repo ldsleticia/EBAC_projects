@@ -7,7 +7,6 @@ class Calculadora extends Component {
 
     this.state = {
       numberDigit: "",
-      simbolDigit: "",
       isResult: false,
       lastCharIsOperator: false,
     };
@@ -60,10 +59,7 @@ class Calculadora extends Component {
     if (simbol === "=" || simbol === "Enter" || simbol === "Return") {
       this.evaluateExpression(this.state.numberDigit);
     } else if (simbol === "C" || simbol === "c") {
-      this.setState({
-        numberDigit: "",
-        isResult: false,
-      });
+      this.clearResult();
     } else if (this.state.numberDigit) {
       this.setState({
         numberDigit: this.state.numberDigit.concat(simbol),
@@ -71,6 +67,13 @@ class Calculadora extends Component {
         lastCharIsOperator: /^[+\-*\/]$/.test(simbol),
       });
     }
+  }
+
+  clearResult() {
+    this.setState({
+      numberDigit: "",
+      isResult: false,
+    });
   }
 
   handleAddNumber(number) {
@@ -88,29 +91,42 @@ class Calculadora extends Component {
 
   render() {
     const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    const simbols = ["+", "=", "*", "-", "/", "C"];
+    const simbols = ["+", "*", "-", "/"];
 
     return (
-      <div className="Calculadora">
-        {/* exibir o resultado em um componente */}
-        <h1 className="result">{this.state.numberDigit ? this.state.numberDigit : "0"}</h1>
-        <section>
+      <main className="mainClass">
+      <h1>{this.state.numberDigit ? this.state.numberDigit : "0"}</h1>
+      <div className="container">
           {numbers.map((number) => (
-            <button className="numberButtons" onClick={() => this.handleAddNumber(number)} key={number}>
+            <button className="item" onClick={() => this.handleAddNumber(number)} key={number}>
               {number}
             </button>
           ))}
-          </section>
-          <section>
             {simbols.map((simbol) => (
-              <button className="operatorButtons" onClick={() => this.handleAddSimbol(simbol)} key={simbol}>
+              <button className="simbols" onClick={() => this.handleAddSimbol(simbol)} key={simbol}>
                 {simbol}
               </button>
           ))}
-          </section>
-          
-        
+          <button
+          className="ac-button"
+          onClick={() => {
+            this.handleAddSimbol("C");
+          }}
+        >
+          {" "}
+          C{" "}
+        </button>
+        <button
+          className="equal-button"
+          onClick={() => {
+            this.handleAddSimbol("=");
+          }}
+        >
+          {" "}
+          ={" "}
+        </button>
       </div>
+      </main>
     );
   }
 }
