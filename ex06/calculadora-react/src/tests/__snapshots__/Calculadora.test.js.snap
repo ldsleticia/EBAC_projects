@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculadora Deve renderizar sem erros 1`] = `ShallowWrapper {}`;
+
+exports[`Calculadora should render without errors 1`] = `ShallowWrapper {}`;

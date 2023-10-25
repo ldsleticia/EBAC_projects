@@ -1,0 +1,27 @@
+body {
+  background-image: url(https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg);
+  background-position: center;
+}
+
+.mainClass {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-content: center;
+  justify-items: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  border-radius: 10px;
+  background-color: #c6dabf;
+}
+
+h1 {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  color: #000000;
+}

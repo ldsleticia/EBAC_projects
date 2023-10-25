@@ -1,0 +1,56 @@
+.item {
+  background-color: #1A936F;
+  backdrop-filter: blur(100px);
+  color: white;
+}
+
+.item,
+.equal-button,
+.simbols,
+.ac-button {
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.item:hover {
+  transition: 1s;
+  background-color: #127758;
+}
+
+.ac-button {
+  grid-column: span 2;
+}
+
+.equal-button,
+.simbols,
+.ac-button {
+  background-color: #88d498;
+  border-radius: 5px;
+}
+
+.equal-button:hover,
+.simbols:hover,
+.ac-button:hover {
+  background-color: #77bb86;
+  transition: 1s;
+}
+
+.equal-button {
+  grid-column: span 4;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.overlay {
+  padding: 10px 10px 10px 10px;
+  background: #c6dabf;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  opacity: 0.9;
+}

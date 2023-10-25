@@ -1,0 +1,8 @@
+.box {
+  width: 18.1%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  opacity: 0.9;
+  background: #c6dabf;
+  margin-top: 10%;
+}
