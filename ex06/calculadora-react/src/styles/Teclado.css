@@ -54,3 +54,11 @@
   border-bottom-right-radius: 5px;
   opacity: 0.9;
 }
+
+@media (min-width: 1917px) {
+  .overlay {
+    min-width: 17%;
+    opacity: 0.9;
+    background: #c6dabf;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Calculadora from "../Calculadora";
+import Calculadora from "../components/Calculadora";
 
 describe("Calculadora", () => {
   it("Deve renderizar sem erros", () => {

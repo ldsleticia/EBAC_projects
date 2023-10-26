@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../src/styles/Teclado.css";
+import "../styles/Teclado.css";
 
 class Teclado extends Component {
   render() {

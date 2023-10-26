@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../src/styles/Calculadora.css";
-import Resultado from "./Resultado";
-import Teclado from "./Teclado";
+import "../styles/Calculadora.css";
+import Resultado from "../components/Resultado";
+import Teclado from "../components/Teclado";
 
 class Calculadora extends Component {
   constructor() {
