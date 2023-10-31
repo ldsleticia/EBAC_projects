@@ -5,6 +5,7 @@ import Formulario from './components/Formulario';
 import FormCPF from './components/FormCPF';
 import ControledComponent from './components/ControledComponent';
 import UncontroledComponent from './components/UncontroledComponent';
+import Moments from './components/Moments';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,8 @@ root.render(
       {/* <Formulario/> */}
       {/* <FormCPF/> */}
       {/* <ControledComponent/> */}
-      <UncontroledComponent/>
+      {/* <UncontroledComponent/> */}
+      <Moments/>
     </div>
   </React.StrictMode>
 );
