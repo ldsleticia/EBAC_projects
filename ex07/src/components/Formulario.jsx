@@ -50,11 +50,11 @@ export default class Formulario extends Component {
     this.setState({ [field]: value });
   }
 
-  chooseCpfOrCnpj() {
-    if (this.state.docType.length === 11) {
-      return "de número: " + this.state.exibitionCpf;
-    } else if (this.state.docType.length === 14) {
-      return "de número: " + this.state.exibitionCnpj;
+  chooseCpfOrCnpj(data) {
+    if (data.length === 11) {
+      return "de número: " + data;
+    } else if (data.length === 14) {
+      return "de número: " + data;
     } else {
       return "Documento inválido";
     }
@@ -117,33 +117,20 @@ export default class Formulario extends Component {
           </div>
 
           <div className="flexChild formResponses">
-          <Content exibitionName={this.state.exibitionName} submitted={this.state.submitted} capitalizeName={this.capitalizeName}/>
-          <Content exibitionAge={this.state.exibitionAge} submitted={this.state.submitted}/>
-          <Content exibitionGender={this.state.exibitionGender} submitted={this.state.submitted}/>
-          <Content exibitionCivilState={this.state.exibitionCivilState} submitted={this.state.submitted}/>
-          {/* <Content exibitionDocType={this.state.exibitionDocType} exibitionCpf={this.state.exibitionCpf} submitted={this.state.submitted} validateCpf={this.validateCpf} chooseCpfOrCnpj={this.chooseCpfOrCnpj}/> */}
-          
-            {this.state.exibitionDocType &&
-            this.state.submitted &&
-            this.validateCpf(this.state.exibitionDocType) ? (
-              <p>
-                Seu documento é um CPF {" "}
-                {this.chooseCpfOrCnpj(this.state.exibitionCpf)}
-              </p>
-            ) : (
-              ""
-            )}
-
-            {this.state.exibitionDocType &&
-            this.state.submitted &&
-            this.validateCnpj(this.state.exibitionDocType) ? (
-              <p>
-                Seu documento é um CNPJ{" "}
-                {this.chooseCpfOrCnpj(this.state.exibitionCnpj)}
-              </p>
-            ) : (
-              ""
-            )}
+            <Content
+              exibitionName={this.state.exibitionName}
+              capitalizeName={this.capitalizeName}
+              exibitionAge={this.state.exibitionAge}
+              exibitionGender={this.state.exibitionGender}
+              exibitionCivilState={this.state.exibitionCivilState}
+              exibitionDocType={this.state.exibitionDocType}
+              submitted={this.state.submitted}
+              exibitionCpf={this.state.exibitionCpf}
+              validateCpf={this.validateCpf}
+              chooseCpfOrCnpj={this.chooseCpfOrCnpj}
+              exibitionCnpj={this.state.exibitionCnpj}
+              validateCnpj={this.validateCnpj}
+            />
           </div>
         </div>
       </>
