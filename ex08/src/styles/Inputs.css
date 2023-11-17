@@ -1,0 +1,12 @@
+.customInput {
+    margin-bottom: 20px;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div > input {
+    margin-left: 8px;
+  }

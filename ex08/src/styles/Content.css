@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+}
+
+.results {
+  text-align: center;
+}
+
+.content-button {
+  margin-right: 5px;
+  margin-left: 10px;
+}

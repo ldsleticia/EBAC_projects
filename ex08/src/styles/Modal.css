@@ -1,0 +1,27 @@
+.modal {
+  display: block;
+  background-color: #dcdcdc;
+  text-align: center;
+  border: 1px;
+  border-radius: 5px;
+  width: 250px;
+  height: 250px;
+  position: fixed;
+  top: 10%;
+  left: 45%;
+}
+
+.prop-modal{
+    margin-top: 20px;
+}
+
+.button-close-modal {
+  border-color: #e7e7e7;
+  color: black;
+  border-radius: 5px;
+  margin-top: 70px;
+}
+
+.button-modal:hover {
+  background: #9e9d9d;
+}
