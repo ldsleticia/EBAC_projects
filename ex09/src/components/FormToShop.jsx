@@ -40,6 +40,7 @@ export default class FormToShop extends Component {
     return (
       <>
         <form onSubmit={this.handlePreventDefault}>
+        <h1>Ficha cadastral</h1>
           <Inputs
             onChange={(e) => this.changeField(e.target.id, e.target.value)}
           />
