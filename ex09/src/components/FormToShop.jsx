@@ -13,6 +13,7 @@ export default class FormToShop extends Component {
       addedName: false,
       addedCity: false,
       sended: false,
+      isShop: false,
     };
   }
 
@@ -40,15 +41,15 @@ export default class FormToShop extends Component {
     return (
       <>
         <form onSubmit={this.handlePreventDefault}>
-        <h1>Ficha cadastral</h1>
+          <h1>Ficha Cadastral</h1>
           <Inputs
+            isShop={(this.setState.isShop = true)}
             onChange={(e) => this.changeField(e.target.id, e.target.value)}
           />
+
           <NameLabel title="Nome do usuário" name={this.state.name} />
           <CityLabel title="Cidade" cityName={this.state.city} />
-          <button disabled={!this.state.addedName || !this.state.addedCity}>
-            Enviar
-          </button>
+          
         </form>
 
         <p>{this.state.sended ? "Enviado com sucesso" : ""}</p>
