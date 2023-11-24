@@ -34,6 +34,8 @@ export default class FormToBank extends Component {
           />
           <button type="submit">Enviar</button>
         </form>
+
+        <p>{this.state.bankAccount}</p>
       </>
     );
   }
