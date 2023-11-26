@@ -8,6 +8,10 @@ export default class Formulario extends Component {
       marcas: [],
       modelosDeCarros: [],
       anos: [],
+      valores: [],
+      marcaSelecionada: "",
+      modeloSelecionado: "",
+      anoSelecionado: "",
     };
   }
 
@@ -39,12 +43,48 @@ export default class Formulario extends Component {
       `https://parallelum.com.br/fipe/api/v1/carros/marcas/${marca}/modelos/${modelo}/anos`
     )
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        this.setState({ anos: result });
+        console.log(result);
+      });
+  }
+
+  consomeValorComBaseNoAno(marca, modelo, ano) {
+    fetch(
+      `https://parallelum.com.br/fipe/api/v1/carros/marcas/${marca}/modelos/${modelo}/anos/${ano}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({ valores: result });
+        console.log(result);
+      });
   }
 
   changeMarca = (e) => {
     const marca = e.target.value;
+    this.setState({ marcaSelecionada: marca });
     this.consomeModeloComBaseNaMarca(marca);
+  };
+
+  changeModelo = (e) => {
+    const modelo = e.target.value;
+    this.setState({ modeloSelecionado: modelo });
+    const marcaSelecionada = this.state.marcaSelecionada;
+
+    if (marcaSelecionada && modelo) {
+      this.consomeAnoComBaseNaMarcaEModelo(marcaSelecionada, modelo);
+    }
+  };
+
+  changeAno = (e) => {
+    const ano = e.target.value;
+    this.setState({ anoSelecionado: ano });
+    const marcaSelecionada = this.state.marcaSelecionada;
+    const modeloSelecionado = this.state.modeloSelecionado;
+
+    if (marcaSelecionada && modeloSelecionado && ano) {
+      this.consomeValorComBaseNoAno(marcaSelecionada, modeloSelecionado, ano);
+    }
   };
 
   render() {
@@ -61,8 +101,8 @@ export default class Formulario extends Component {
           })}
         </select>
 
-        <select>
-          <option value="">Selecione um modelo </option>
+        <select onChange={this.changeModelo}>
+          <option value="">Selecione um modelo</option>
           {this.state.modelosDeCarros.map((modelo) => {
             return (
               <option key={modelo.ano} value={modelo.codigo}>
@@ -71,6 +111,20 @@ export default class Formulario extends Component {
             );
           })}
         </select>
+
+        <select onChange={this.changeAno}>
+          <option>Selecione o ano</option>
+          {this.state.anos.map((ano) => {
+            return (
+              <option key={ano.codigo} value={ano.codigo}>
+                {" "}
+                {ano.nome}{" "}
+              </option>
+            );
+          })}
+        </select>
+
+        
       </>
     );
   }
