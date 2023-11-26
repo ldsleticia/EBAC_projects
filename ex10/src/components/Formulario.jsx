@@ -13,47 +13,45 @@ export default class Formulario extends Component {
 
   componentDidMount() {
     this.consomeMarcas();
-    this.consomeModelos();
-    this.consomeAnosDeModelos();
-    this.consomeValor();
   }
 
   consomeMarcas() {
     fetch("https://parallelum.com.br/fipe/api/v1/carros/marcas")
       .then((res) => res.json())
-      .then((result) => this.setState({ marcas: result }));
+      .then((result) => {
+        this.setState({ marcas: result });
+        this.consomeModeloComBaseNaMarca(result[0]?.codigo);
+      });
   }
 
-  consomeModelos() {
-    fetch("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos")
-      .then((res) => res.json())
-      .then((resultado) =>
-        this.setState({ modelosDeCarros: resultado.modelos })
-      );
-  }
-
-  consomeAnosDeModelos() {
+  consomeModeloComBaseNaMarca(marca) {
     fetch(
-      "https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos"
+      `https://parallelum.com.br/fipe/api/v1/carros/marcas/${marca}/modelos`
     )
       .then((res) => res.json())
-      .then((resultado) => this.setState({ anos: resultado }));
+      .then((result) => {
+        this.setState({ modelosDeCarros: result.modelos });
+      });
   }
 
-  consomeValor() {
+  consomeAnoComBaseNaMarcaEModelo(marca, modelo) {
     fetch(
-      "https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3"
+      `https://parallelum.com.br/fipe/api/v1/carros/marcas/${marca}/modelos/${modelo}/anos`
     )
       .then((res) => res.json())
-      .then((resultado) => console.log(resultado));
+      .then((result) => console.log(result));
   }
+
+  changeMarca = (e) => {
+    const marca = e.target.value;
+    this.consomeModeloComBaseNaMarca(marca);
+  };
 
   render() {
     return (
-      <div>
-        <h1>Formulario</h1>
-        <p>Selecione as informacoes do carro:</p>
-        <select name="cars" id="cars">
+      <>
+        <select name="cars" id="cars" onChange={this.changeMarca}>
+          <option value="">Selecione uma marca</option>
           {this.state.marcas.map((marca) => {
             return (
               <option key={marca.codigo} value={marca.codigo}>
@@ -64,6 +62,7 @@ export default class Formulario extends Component {
         </select>
 
         <select>
+          <option value="">Selecione um modelo </option>
           {this.state.modelosDeCarros.map((modelo) => {
             return (
               <option key={modelo.ano} value={modelo.codigo}>
@@ -72,17 +71,7 @@ export default class Formulario extends Component {
             );
           })}
         </select>
-
-        <select>
-          {this.state.anos.map((ano) => {
-            return (
-              <option key={ano.codigo} value={ano.codigo}>
-                {ano.nome}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      </>
     );
   }
 }
