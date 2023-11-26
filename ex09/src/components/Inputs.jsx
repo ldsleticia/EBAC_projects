@@ -4,6 +4,30 @@ export default class Inputs extends Component {
   render() {
     return (
       <>
+        {this.props.isShopkeeper ? (
+          <div>
+            <p>Nome da loja: </p>
+            <input
+              type="text"
+              id="shopkeeper"
+              value={this.props.value}
+              onChange={this.props.onChange}
+              required
+            />
+            <p>Nome do vendedor: </p>
+            <input
+              type="text"
+              id="seller"
+              value={this.props.value}
+              onChange={this.props.onChange}
+              required
+            />
+          </div>
+          
+        ) : (
+          ""
+        )}
+
         {this.props.isShop ? (
           <div>
             <p>Digite seu nome: </p>

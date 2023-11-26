@@ -29,13 +29,8 @@ export default class FormToShop extends Component {
       });
     }
     this.setState({ [field]: value, sended: false });
+    this.props.onFormChange(this.state.addedName && this.state.addedCity);
   }
-
-  handlePreventDefault = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    this.setState({ sended: true });
-  };
 
   render() {
     return (
@@ -47,12 +42,11 @@ export default class FormToShop extends Component {
             onChange={(e) => this.changeField(e.target.id, e.target.value)}
           />
 
+          <p> Confira os dados abaixo: </p>
+
           <NameLabel title="Nome do usuário" name={this.state.name} />
           <CityLabel title="Cidade" cityName={this.state.city} />
-          
         </form>
-
-        <p>{this.state.sended ? "Enviado com sucesso" : ""}</p>
       </>
     );
   }
