@@ -1,29 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MarcasController from "../controller/MarcasController";
+import SelectComponent from "./SelectComponent";
 function FormComFunction() {
   const [marcas, setMarcas] = useState([]);
+  const [modelosDeCarros, setModelosDeCarros] = useState([]);
 
-  async function getMarcas() {
+  const [marcaSelecionada, setMarcaSelecionada] = useState("");
+  const [modeloSelecionado, setModeloSelecionado] = useState("");
+  const [anos, setAnos] = useState([]);
+
+  useEffect(() => {
+    async function fetchMarcas() {
+      const controller = new MarcasController();
+      try {
+        const marcasData = await controller.getMarcas();
+        setMarcas(marcasData);
+      } catch (error) {
+        console.error("Erro ao buscar marcas:", error);
+      }
+    }
+
+    fetchMarcas();
+  }, []);
+
+  async function getModelos(marca) {
     const controller = new MarcasController();
     try {
-      const marcasData = await controller.getMarcas();
-      setMarcas(marcasData);
+      const modelosData = await controller.getModelos(marca);
+      setModelosDeCarros(modelosData);
     } catch (error) {}
   }
 
-  getMarcas();
+  const changeModeloComBaseNaMarca = (e) => {
+    const marcaSelecionada = e.target.value;
+    setMarcaSelecionada(marcaSelecionada);
+    console.log(marcaSelecionada);
+    getModelos(marcaSelecionada);
+  };
+
+  const changeAnoComBaseNoModeloENaMarca = (e) => {
+    console.log(e.target.value);
+  };
 
   return (
     <>
-      <h1>Lista de marcas</h1>
-      <select>
-      <option value={""}>Selecione uma marca</option>
-        {marcas.map((marca) => (
-          <option key={marca.codigo} value={marca.codigo}>
-            {marca.nome}
-          </option>
-        ))}
-      </select>
+      <h1>Escolha as informações do carro</h1>
+
+      <SelectComponent options={marcas} onChange={changeModeloComBaseNaMarca} />
+      {/* <SelectComponent
+        options={modelosDeCarros}
+        onChange={changeAnoComBaseNoModeloENaMarca}
+      /> */}
     </>
   );
 }
