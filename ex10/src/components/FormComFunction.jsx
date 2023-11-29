@@ -27,14 +27,13 @@ function FormComFunction() {
     const controller = new MarcasController();
     try {
       const modelosData = await controller.getModelos(marca);
-      setModelosDeCarros(modelosData);
+      setModelosDeCarros(modelosData.modelos);
     } catch (error) {}
   }
 
   const changeModeloComBaseNaMarca = (e) => {
     const marcaSelecionada = e.target.value;
     setMarcaSelecionada(marcaSelecionada);
-    console.log(marcaSelecionada);
     getModelos(marcaSelecionada);
   };
 
@@ -47,10 +46,10 @@ function FormComFunction() {
       <h1>Escolha as informações do carro</h1>
 
       <SelectComponent options={marcas} onChange={changeModeloComBaseNaMarca} />
-      {/* <SelectComponent
+      <SelectComponent
         options={modelosDeCarros}
         onChange={changeAnoComBaseNoModeloENaMarca}
-      /> */}
+      />
     </>
   );
 }

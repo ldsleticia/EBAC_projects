@@ -45,7 +45,6 @@ export default class Formulario extends Component {
       .then((res) => res.json())
       .then((result) => {
         this.setState({ anos: result });
-        console.log(result);
       });
   }
 
@@ -56,7 +55,6 @@ export default class Formulario extends Component {
       .then((res) => res.json())
       .then((result) => {
         this.setState({ valores: result });
-        console.log(result);
       });
   }
 
@@ -90,6 +88,17 @@ export default class Formulario extends Component {
   render() {
     return (
       <div>
+        <select onChange={this.changeMarca}>
+          <option>Selecione uma Marca</option>
+          {this.state.marcas.map((marca, index) => {
+            return (
+              <option key={index} value={marca.codigo}>
+                {marca.nome}
+              </option>
+            );
+          })}
+        </select>
+
         <select onChange={this.changeModelo}>
           <option value="">Selecione um modelo</option>
           {this.state.modelosDeCarros.map((modelo, index) => {
@@ -112,6 +121,8 @@ export default class Formulario extends Component {
             );
           })}
         </select>
+
+        <p>{this.state.valores.Valor}</p>
       </div>
     );
   }
