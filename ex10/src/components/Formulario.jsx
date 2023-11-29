@@ -89,23 +89,12 @@ export default class Formulario extends Component {
 
   render() {
     return (
-      <>
-        <select name="cars" id="cars" onChange={this.changeMarca}>
-          <option value="">Selecione uma marca</option>
-          {this.state.marcas.map((marca) => {
-            return (
-              <option key={marca.codigo} value={marca.codigo}>
-                {marca.nome}
-              </option>
-            );
-          })}
-        </select>
-
+      <div>
         <select onChange={this.changeModelo}>
           <option value="">Selecione um modelo</option>
-          {this.state.modelosDeCarros.map((modelo) => {
+          {this.state.modelosDeCarros.map((modelo, index) => {
             return (
-              <option key={modelo.ano} value={modelo.codigo}>
+              <option key={index} value={modelo.codigo}>
                 {modelo.nome}
               </option>
             );
@@ -114,18 +103,16 @@ export default class Formulario extends Component {
 
         <select onChange={this.changeAno}>
           <option>Selecione o ano</option>
-          {this.state.anos.map((ano) => {
+          {this.state.anos.map((ano, index) => {
             return (
-              <option key={ano.codigo} value={ano.codigo}>
+              <option key={index} value={ano.codigo}>
                 {" "}
                 {ano.nome}{" "}
               </option>
             );
           })}
         </select>
-
-        
-      </>
+      </div>
     );
   }
 }
