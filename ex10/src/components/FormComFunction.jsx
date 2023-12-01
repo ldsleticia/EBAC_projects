@@ -31,6 +31,14 @@ function FormComFunction() {
     } catch (error) {}
   }
 
+  async function getAnos(marca, modelo) {
+    const controller = new MarcasController();
+    try {
+      const anosData = await controller.getAnos(marca, modelo);
+      setAnos(anosData);
+    } catch (error) {}
+  }
+
   const changeModeloComBaseNaMarca = (e) => {
     const marcaSelecionada = e.target.value;
     setMarcaSelecionada(marcaSelecionada);
@@ -38,7 +46,11 @@ function FormComFunction() {
   };
 
   const changeAnoComBaseNoModeloENaMarca = (e) => {
-    console.log(e.target.value);
+    const modeloSelecionadoAnterior = e.target.value;
+    setModeloSelecionado(modeloSelecionadoAnterior);
+
+    const marcaSelecionadaAnterior = marcaSelecionada;
+    getAnos(marcaSelecionadaAnterior, modeloSelecionadoAnterior);
   };
 
   return (
@@ -50,6 +62,7 @@ function FormComFunction() {
         options={modelosDeCarros}
         onChange={changeAnoComBaseNoModeloENaMarca}
       />
+      <SelectComponent options={anos} />
     </>
   );
 }
