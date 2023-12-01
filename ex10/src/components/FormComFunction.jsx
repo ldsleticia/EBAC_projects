@@ -8,6 +8,7 @@ function FormComFunction() {
   const [marcaSelecionada, setMarcaSelecionada] = useState("");
   const [modeloSelecionado, setModeloSelecionado] = useState("");
   const [anos, setAnos] = useState([]);
+  const [valores, setValores] = useState([]);
 
   useEffect(() => {
     async function fetchMarcas() {
@@ -39,6 +40,14 @@ function FormComFunction() {
     } catch (error) {}
   }
 
+  async function getValores(marca, modelo, ano) {
+    const controller = new MarcasController();
+    try {
+      const valoresData = await controller.getValores(marca, modelo, ano);
+      setValores(valoresData);
+    } catch (error) {}
+  }
+
   const changeModeloComBaseNaMarca = (e) => {
     const marcaSelecionada = e.target.value;
     setMarcaSelecionada(marcaSelecionada);
@@ -47,22 +56,51 @@ function FormComFunction() {
 
   const changeAnoComBaseNoModeloENaMarca = (e) => {
     const modeloSelecionadoAnterior = e.target.value;
-    setModeloSelecionado(modeloSelecionadoAnterior);
-
     const marcaSelecionadaAnterior = marcaSelecionada;
+
+    setModeloSelecionado(modeloSelecionadoAnterior);
     getAnos(marcaSelecionadaAnterior, modeloSelecionadoAnterior);
+  };
+
+  const retornaValor = (e) => {
+    const anoSelecionadoAnterior = e.target.value;
+    const marcaSelecionadaAnterior = marcaSelecionada;
+    const modeloSelecionadoAnterior = modeloSelecionado;
+
+    if (
+      (anoSelecionadoAnterior,
+      marcaSelecionadaAnterior,
+      modeloSelecionadoAnterior)
+    ) {
+      console.log("retornarei o valor");
+      getValores(
+        marcaSelecionadaAnterior,
+        modeloSelecionadoAnterior,
+        anoSelecionadoAnterior
+      );
+    }
+  };
+
+  const handleSelectChange = () => {
+    setValores("");
   };
 
   return (
     <>
       <h1>Escolha as informações do carro</h1>
 
-      <SelectComponent options={marcas} onChange={changeModeloComBaseNaMarca} />
+      <SelectComponent
+        options={marcas}
+        onChange={changeModeloComBaseNaMarca}
+        onBlur={handleSelectChange}
+      />
       <SelectComponent
         options={modelosDeCarros}
         onChange={changeAnoComBaseNoModeloENaMarca}
+        onBlur={handleSelectChange}
       />
-      <SelectComponent options={anos} />
+      <SelectComponent options={anos} onChange={retornaValor} onBlur={handleSelectChange}/>
+      <p>{valores.Valor ? valores.Valor : ""}</p>
     </>
   );
 }
