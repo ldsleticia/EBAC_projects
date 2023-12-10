@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(227, 131, 131);
+    padding: 2em;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+}
